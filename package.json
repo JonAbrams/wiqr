@@ -8,7 +8,6 @@
     , "less": ">= 0.0.1"
     , "jade": ">= 0.0.1"
     , "connect-assets": ">= 2.1.9"
-    , "qrcode": ">= 0.1.1"
     , "knox": ">= 0.0.9"
   }
   , "engines": {
