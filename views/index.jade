@@ -1,4 +1,17 @@
-
-
 h1= title
-p Welcome to #{title}!
+p
+  | MintChip Trader is the easiest way to trade your cloud-hosted MintChip money in person.
+  ul
+    li Select the amount of MintChip money you want to give in Canadian Dollars (CAD)
+    li You will be sent to the Royal Canadian Mint site to approve the request.
+    li If you approved the request you will be shown a "QR Code".
+    li Show that QR code to another MintChip user who can scan it using any QR code app!
+  | Note: Both parties must have their respective MintChip cloud-host SSL certificates installed on their phones
+  | before using this service.
+  | 
+  | This site is still in early prototype phase. We are not responsible if you lose money.
+
+form#give_form(method="post", action="give")
+  label Amount (in CAD):
+    input(type="number", name="amount")
+  input(type="submit", value="Give Money")
