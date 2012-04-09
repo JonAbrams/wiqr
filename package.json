@@ -11,6 +11,7 @@
     , "knox": ">= 0.0.9"
     , "redis": "0.7.1"
     , "canvas": "git://github.com/elspoono/node-canvas-heroku.git#master"
+    , "qrcode": ">= 0.1.1"
   }
   , "devDependencies": {
     "canvas": "0.10.0"
