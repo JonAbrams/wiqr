@@ -22,7 +22,7 @@ exports.give = {}
 exports.give.create = (req, res) ->
   id = Math.floor(Math.random() * 1000000)
   redis_client.set "give-#{id}", req.body.amount
-  qrcode.toDataURL "http://localhost/give/#{id}", (err, data) ->
+  qrcode.toDataURL "http://#{req.headers.host}/give/#{id}", (err, data) ->
     buf = new Buffer(data.replace(/^data:image\/png;base64,/,""), 'base64')
     s3_req = s3_client.put "give/#{id}.png",
       'Content-Length': buf.length
