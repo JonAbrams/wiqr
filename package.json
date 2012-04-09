@@ -10,6 +10,10 @@
     , "connect-assets": ">= 2.1.9"
     , "knox": ">= 0.0.9"
     , "redis": "0.7.1"
+    , "canvas": "git://github.com/elspoono/node-canvas-heroku.git#master"
+  }
+  , "devDependencies": {
+    "canvas": "0.10.0"
   }
   , "engines": {
       "node": "0.6.x"
