@@ -12,6 +12,7 @@ qrcode = require "qrcode"
 
 redis = require "redis"
 redis_client = redis.createClient()
+redis_client.auth process.env.REDIS_AUTH or ""
 
 exports.index = (req, res) ->
   res.render 'index', title: 'MintChip Trader'
