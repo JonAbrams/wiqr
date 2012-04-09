@@ -11,7 +11,7 @@ s3_client = require('knox').createClient(
 qrcode = require "qrcode"
 
 redis = require "redis"
-redis_client = redis.createClient()
+redis_client = redis.createClient process.env.REDIS_PORT or null, process.env.REDIS_HOST or null
 redis_client.auth process.env.REDIS_AUTH or ""
 
 exports.index = (req, res) ->
