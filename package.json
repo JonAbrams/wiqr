@@ -9,6 +9,7 @@
     , "jade": ">= 0.0.1"
     , "connect-assets": ">= 2.1.9"
     , "knox": ">= 0.0.9"
+    , "redis": "0.7.1"
   }
   , "engines": {
       "node": "0.6.x"

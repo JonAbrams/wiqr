@@ -23,7 +23,9 @@ app.configure "production", ->
   app.use express.errorHandler()
 
 app.get "/", routes.index
-app.post "/give", routes.give
+app.post "/give", routes.give.create
+app.get "/give/:id", routes.give.show
+app.get "/give", routes.give.index
 
 port = process.env.PORT or 3000
 app.listen port, ->
