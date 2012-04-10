@@ -1,11 +1,13 @@
+!= js("entry")
+
 .container
   .row
     .span8.offset2
       .entry
         | Hits: #{count}
         br
+        label#short_url_label Share this:
+          input#short_url(value=short_url, readonly)
         img(src="#{qr_url}")
-        br
-        a.continue(href=text) Continue to #{text}
         br
         a.go_back(href="/") <<< Make another one

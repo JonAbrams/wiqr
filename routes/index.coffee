@@ -14,14 +14,12 @@ redis_client.auth process.env.REDIS_AUTH or ""
 # Handlers
 
 exports.index = (req, res) ->
-  # console.log "index"
   res.render 'index', {}
   res.end()
 
 exports.entry = {}
 
 exports.entry.create = (req, res) ->
-  # console.log "create: #{req.body.url}"
   id = Math.floor(Math.random() * 1000000)
   redis_client.hmset "#{id}-text", {text: req.body.url, count: 0 }
   shrunken_url = "http://#{req.headers.host}/#{id}"
@@ -32,22 +30,31 @@ exports.entry.create = (req, res) ->
       "Content-Type": "image/png"
     s3_req.on 'response', (s3_res) ->
       if s3_res.statusCode is 200
-        res.redirect shrunken_url
+        res.redirect "#{shrunken_url}+"
       else
         res.end "Epic fail! Couldn't connect to S3, sorry :("
     s3_req.end(buf)
 
-exports.entry.show = (req, res) ->
-  # console.log "show"
-  res.redirect "/" unless req.params.id
-  redis_client.hgetall "#{req.params.id}-text", (err, obj) ->
-    text = obj.text.toString() if obj? and obj.text?
-    redis_client.hincrby "#{req.params.id}-text", "count", 1
-    if text?
-      res.render "entry"
-        , qr_url: "//s3.amazonaws.com/wiqr/qrcodes/#{req.params.id}.png"
-        , text: text
-        , count: obj.count
-        , type: "url" # TODO: Support different types of qr codes
-    else
-      res.redirect "/"
+exports.entry.show = (req, res, next) ->
+  if not req.params.id? or req.params.id is "favicon.ico"
+    next()
+  else
+    id = req.params.id
+    plus = id[id.length-1] is '+'
+    if plus
+      id = id.substring 0, id.length - 1
+    redis_client.hgetall "#{id}-text", (err, obj) ->
+      text = obj.text.toString() if obj? and obj.text?
+      if text?
+        if plus
+          redis_client.hincrby "#{id}-text", "count", 1
+          res.render "entry"
+            , short_url: "http://#{req.headers.host}/#{id}"
+            , qr_url: "//s3.amazonaws.com/wiqr/qrcodes/#{id}.png"
+            , text: text
+            , count: obj.count
+            , type: "url" # TODO: Support different types of qr codes
+        else
+          res.redirect text
+      else
+        res.redirect "/"
