@@ -8,7 +8,7 @@ app.configure ->
   app.use express.bodyParser()
   app.use express.methodOverride()
   app.use app.router
-  app.use express.static(__dirname + "/public")
+  app.use express["static"](__dirname + "/public")
   app.use require("connect-assets")()
   app.use express.cookieParser()
   app.use express.session({ secret: "keyboard cat" })
@@ -23,9 +23,8 @@ app.configure "production", ->
   app.use express.errorHandler()
 
 app.get "/", routes.index
-app.post "/give", routes.give.create
-app.get "/give/:id", routes.give.show
-app.get "/give", routes.give.index
+app.post "/create", routes.entry.create
+app.get "/:id", routes.entry.show
 
 port = process.env.PORT or 3000
 app.listen port, ->

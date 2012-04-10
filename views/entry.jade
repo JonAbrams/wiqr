@@ -1,0 +1,11 @@
+.container
+  .row
+    .span8.offset2
+      .entry
+        | Hits: #{count}
+        br
+        img(src="#{qr_url}")
+        br
+        a.continue(href=text) Continue to #{text}
+        br
+        a.go_back(href="/") <<< Make another one
