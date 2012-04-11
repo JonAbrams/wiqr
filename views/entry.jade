@@ -6,8 +6,17 @@
       .entry
         | Hits: #{count}
         br
-        label#short_url_label Share this:
+        br
+        label#short_url_label This:
           input#short_url(value=short_url, readonly)
+        | Points to this: 
+        = text
+        br
         img(src="#{qr_url}")
+        - if (type != "url")
+          div.alert.alert-error
+            strong Careful! 
+            | This does not appear to be a valid URL.
+            | Did you remember to stick "http://" at the front?
         br
         a.go_back(href="/") <<< Make another one
