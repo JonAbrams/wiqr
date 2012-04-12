@@ -24,7 +24,7 @@ app.configure "production", ->
 
 app.get "/", routes.index
 app.post "/create", routes.entry.create
-app.get "/:id", routes.entry.show
+app.get "/:slug", routes.entry.show
 
 port = process.env.PORT or 3000
 app.listen port, ->
