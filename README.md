@@ -9,14 +9,12 @@ This is a simple project I cooked up over the weekend to teach myself node.js (a
 - Track the number of hits by visiting the shortened URL with a '+' appended.
 
 ## Dependencies
-- An S3 account + bucket for storing qr code images
 - A redis server for data storage
 
-Note: A special version of the node.js canvas package is used for heroku compatibility. If you don't use heroku, you should change it to use the default "canvas" package.
+Note: A special version of the node.js canvas package is used for heroku compatibility. If you don't use heroku, you should change it to use the default *canvas* package.
 
 ## Issues/TODO
 - Generate shorter URLs.
-- Keep track of generated URLs so that none get overwritten.
 - Support unicode characters
 
 ## Author
@@ -24,10 +22,11 @@ Note: A special version of the node.js canvas package is used for heroku compati
 
 - [Follow on Twitter](http://twitter.com/JonathanAbrams)
 
-## Copyright + License
-Copyright 2012 Jon Abrams <jon@jonabrams.com>
+## License
 
-License: MIT License
+(The MIT License)
+
+Copyright (c) 2012 Jon Abrams
 
 Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the 'Software'), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
 

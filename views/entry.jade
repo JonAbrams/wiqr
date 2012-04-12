@@ -9,10 +9,13 @@
         br
         label#short_url_label This:
           input#short_url(value=short_url, readonly)
-        | Points to this: 
+        | and this:
+        br
+        img(src="#{qr_code}")
+        br
+        | Point to this: 
         = text
         br
-        img(src="#{qr_url}")
         - if (type != "url")
           div.alert.alert-error
             strong Careful! 
