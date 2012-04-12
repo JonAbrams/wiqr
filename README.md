@@ -14,8 +14,7 @@ This is a simple project I cooked up over the weekend to teach myself node.js (a
 Note: A special version of the node.js canvas package is used for heroku compatibility. If you don't use heroku, you should change it to use the default *canvas* package.
 
 ## Issues/TODO
-- Generate shorter URLs.
-- Support unicode characters
+- Support unicode characters in URLs.
 
 ## Author
 **Jon Abrams**
