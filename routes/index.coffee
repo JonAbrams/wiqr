@@ -43,7 +43,6 @@ exports.entry.create = (req, res) ->
       short_url = "http://#{req.headers.host}/#{slug}"
       redis_client.hmset "#{id}-text", {text: url, slug: slug, count: 0 }, (err, redis_result) ->
           res.redirect "#{short_url}+"
-          console.log "Added slug: #{slug} to db"
   else
     res.redirect "/"
 
