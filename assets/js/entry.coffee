@@ -1,4 +1,2 @@
 $ ->
-  $('input#short_url').click (event) ->
-    event.preventDefault()
-    # ('label#short_url_label').click()
+  $('input#short_url').click (event) -> $(this).select()
