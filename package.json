@@ -12,7 +12,7 @@
     , "redis": "0.7.1"
     , "canvas": "git://github.com/elspoono/node-canvas-heroku.git#master"
     , "qrcode": ">= 0.1.1"
-    , "node-shorty": "git://github.com/JonAbrams/node-shorty.git#master"
+    , "node-shorty": ">= 1.0.0"
   }
   , "devDependencies": {
     "canvas": "0.10.0"
