@@ -7,9 +7,9 @@ app.configure ->
   app.set 'view options', {pretty: true}
   app.use express.bodyParser()
   app.use express.methodOverride()
-  app.use app.router
   app.use express["static"](__dirname + "/public")
   app.use require("connect-assets")()
+  app.use app.router
   app.use express.cookieParser()
   app.use express.session({ secret: "keyboard cat" })
 
